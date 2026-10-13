@@ -227,10 +227,13 @@ class Budget:
                 return None
         with self.locked():
             records = self.active(self.read())
-            if (
-                sum(r["memory_bytes"] for r in records) + memory_bytes
-                > self.limits.memory_bytes
-            ):
+            effective_cap = self.limits.memory_bytes
+            if self.limits.live_guard:
+                effective_cap = min(
+                    effective_cap,
+                    self.cached_probe["available_bytes"] - self.limits.headroom_bytes,
+                )
+            if sum(r["memory_bytes"] for r in records) + memory_bytes > effective_cap:
                 return None
             if sum(r["io_slots"] for r in records) + io_slots > self.limits.io_slots:
                 return None
@@ -417,7 +420,9 @@ def main(argv=None):
     inherited = budget.inherits(
         os.environ.get("MAC_RESOURCE_LEASE"), request, args.io_slots
     )
-    token = None if inherited else budget.wait_for(request, args.io_slots, timeout)
+    if inherited:
+        os.execvpe(child_command[0], child_command, os.environ.copy())
+    token = budget.wait_for(request, args.io_slots, timeout)
     environment = os.environ.copy()
     if token:
         environment["MAC_RESOURCE_LEASE"] = token

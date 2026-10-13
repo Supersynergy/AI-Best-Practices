@@ -1,5 +1,5 @@
 {
-  "runner_sha256": "2e0f1bba26ca8f14d0ce0c7b9e5bcd51dd52b2cafba5413240490182668530ff",
+  "runner_sha256": "bac9c22245ce081112078320322911ce550e6b4a0c9834bc7cb8482fac5e5e05",
   "workload": "Three owned jobs, 32 MiB touched memory each, 1 MiB durable payload each, identical output hashes",
   "samples_per_arm": 3,
   "host": "macOS",
@@ -8,8 +8,8 @@
   "arms": {
     "before": [
       {
-        "wall_seconds": 0.691924624999956,
-        "peak_owned_process_bytes": 133056264,
+        "wall_seconds": 0.7149938750008005,
+        "peak_owned_process_bytes": 131286384,
         "peak_active_workers": 3,
         "logical_payload_bytes": 3145728,
         "results": [
@@ -31,8 +31,8 @@
         ]
       },
       {
-        "wall_seconds": 0.7386338750002324,
-        "peak_owned_process_bytes": 129697184,
+        "wall_seconds": 0.6878566670002328,
+        "peak_owned_process_bytes": 130352520,
         "peak_active_workers": 3,
         "logical_payload_bytes": 3145728,
         "results": [
@@ -54,8 +54,8 @@
         ]
       },
       {
-        "wall_seconds": 0.7348827080004412,
-        "peak_owned_process_bytes": 129238240,
+        "wall_seconds": 0.7035777080000116,
+        "peak_owned_process_bytes": 131466632,
         "peak_active_workers": 3,
         "logical_payload_bytes": 3145728,
         "results": [
@@ -79,8 +79,8 @@
     ],
     "after": [
       {
-        "wall_seconds": 2.5297044580001966,
-        "peak_owned_process_bytes": 94980544,
+        "wall_seconds": 2.5982861669999693,
+        "peak_owned_process_bytes": 89638856,
         "peak_active_workers": 1,
         "logical_payload_bytes": 3145728,
         "results": [
@@ -102,8 +102,8 @@
         ]
       },
       {
-        "wall_seconds": 2.5128947909997805,
-        "peak_owned_process_bytes": 90867848,
+        "wall_seconds": 2.573593000000983,
+        "peak_owned_process_bytes": 90867656,
         "peak_active_workers": 1,
         "logical_payload_bytes": 3145728,
         "results": [
@@ -125,8 +125,8 @@
         ]
       },
       {
-        "wall_seconds": 2.6203882080008043,
-        "peak_owned_process_bytes": 91064384,
+        "wall_seconds": 2.6038462500000605,
+        "peak_owned_process_bytes": 89557056,
         "peak_active_workers": 1,
         "logical_payload_bytes": 3145728,
         "results": [
@@ -151,14 +151,14 @@
   },
   "summary": {
     "before": {
-      "wall_seconds": 0.7348827080004412,
-      "peak_owned_process_bytes": 129697184,
+      "wall_seconds": 0.7035777080000116,
+      "peak_owned_process_bytes": 131286384,
       "peak_active_workers": 3,
       "logical_payload_bytes": 3145728
     },
     "after": {
-      "wall_seconds": 2.5297044580001966,
-      "peak_owned_process_bytes": 91064384,
+      "wall_seconds": 2.5982861669999693,
+      "peak_owned_process_bytes": 89638856,
       "peak_active_workers": 1,
       "logical_payload_bytes": 3145728
     }

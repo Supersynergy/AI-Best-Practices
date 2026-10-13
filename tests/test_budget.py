@@ -68,6 +68,19 @@ class BudgetTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 guarded.acquire(mac_budget.GIB, 0)
 
+    def test_available_memory_counts_pending_reservations(self):
+        guarded = mac_budget.Budget(
+            self.root,
+            mac_budget.Limits(16 * mac_budget.GIB, 1, 4 * mac_budget.GIB, 0, True),
+        )
+        with patch.object(
+            mac_budget,
+            "live_probe",
+            return_value={"pressure": 1, "available_bytes": 8 * mac_budget.GIB},
+        ):
+            self.assertIsNotNone(guarded.acquire(4 * mac_budget.GIB, 0))
+            self.assertIsNone(guarded.acquire(4 * mac_budget.GIB, 0))
+
     def test_dead_or_reused_pid_lease_is_recovered(self):
         first = self.budget.acquire(8 * mac_budget.GIB, 1)
         with patch.object(mac_budget, "pid_birth", return_value="different-start"):
@@ -212,6 +225,44 @@ class BudgetTests(unittest.TestCase):
         result = subprocess.run(command, capture_output=True, timeout=5)
         self.assertEqual(result.returncode, 2, result.stderr.decode())
         self.assertIn(b"exceeds its parent", result.stderr)
+
+    def test_nested_execution_stays_in_registered_process_group(self):
+        config = self.root / "config.json"
+        config.write_text(
+            json.dumps(
+                {
+                    "memory_budget_gib": 1,
+                    "io_slots": 1,
+                    "headroom_gib": 0,
+                    "disk_headroom_gib": 0,
+                    "live_guard": False,
+                }
+            )
+        )
+        state = self.root / "nested-group-state"
+        runner = str(Path(mac_budget.__file__))
+        prefix = [
+            sys.executable,
+            runner,
+            "--state-dir",
+            str(state),
+            "--config",
+            str(config),
+            "run",
+            "--memory-gib",
+            "1",
+            "--",
+        ]
+        code = 'import json,os,sys,time; from pathlib import Path; path=Path(sys.argv[1]); records=json.loads(path.read_text()); deadline=time.monotonic()+1\nwhile not records[0].get("pgid") and time.monotonic()<deadline:\n time.sleep(.01); records=json.loads(path.read_text())\nprint(json.dumps({"actual":os.getpgrp(),"registered":records[0]["pgid"]}))'
+        result = subprocess.run(
+            prefix + prefix + [sys.executable, "-c", code, str(state / "leases.json")],
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        identity = json.loads(result.stdout)
+        self.assertEqual(identity["actual"], identity["registered"])
 
     def test_process_group_is_held_after_direct_child_exit(self):
         config = self.root / "config.json"

@@ -2,7 +2,7 @@
 
 The runner reserves declared whole-tree peak RAM and a number of I/O slots. This is admission control for cooperating future jobs. It cannot prevent an unregistered application or a misestimated job from allocating more memory or issuing writes.
 
-The live Mac gate requires a normal native pressure level and sufficient estimated available memory. The estimate includes free, inactive and speculative pages; these are not an allocation guarantee. A minimum filesystem availability gate prevents admissions below the configured floor. GPU/model memory must be included in the declared peak.
+The live Mac gate requires a normal native pressure level and sufficient estimated available memory for all existing reservations plus the new peak and headroom. The estimate includes free, inactive and speculative pages; these are not an allocation guarantee. Counting existing reservations is conservative and can count memory that has already been allocated twice. A minimum filesystem availability gate prevents admissions below the configured floor. GPU/model memory must be included in the declared peak.
 
 ## Conservative starting profiles
 
