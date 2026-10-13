@@ -1,0 +1,173 @@
+{
+  "runner_sha256": "0903b7f50a07ffc33acde181712ae7863ae0fa10fd1518c0b90bf5ae747d039a",
+  "workload": "Three owned jobs, 32 MiB touched memory each, 1 MiB durable payload each, identical output hashes",
+  "samples_per_arm": 3,
+  "host": "macOS",
+  "memory_metric": "sum of per-process physical footprint, including waiting wrappers",
+  "filesystem_cache": "uncontrolled/warm; fresh processes each time",
+  "arms": {
+    "before": [
+      {
+        "wall_seconds": 0.7268023750002612,
+        "peak_owned_process_bytes": 134596072,
+        "peak_active_workers": 3,
+        "logical_payload_bytes": 3145728,
+        "results": [
+          {
+            "index": 0,
+            "sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+            "bytes": 1048576
+          },
+          {
+            "index": 1,
+            "sha256": "ee78cd29d3a534713b36e6ff6fa3668c8a8f851a542d5eb2401c25ca4e057d02",
+            "bytes": 1048576
+          },
+          {
+            "index": 2,
+            "sha256": "2fa4430272111c7854b204001461e16f2c73725b07dde2b6d1dc4f2aa8fe18da",
+            "bytes": 1048576
+          }
+        ]
+      },
+      {
+        "wall_seconds": 0.7144637499986857,
+        "peak_owned_process_bytes": 129713448,
+        "peak_active_workers": 3,
+        "logical_payload_bytes": 3145728,
+        "results": [
+          {
+            "index": 0,
+            "sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+            "bytes": 1048576
+          },
+          {
+            "index": 1,
+            "sha256": "ee78cd29d3a534713b36e6ff6fa3668c8a8f851a542d5eb2401c25ca4e057d02",
+            "bytes": 1048576
+          },
+          {
+            "index": 2,
+            "sha256": "2fa4430272111c7854b204001461e16f2c73725b07dde2b6d1dc4f2aa8fe18da",
+            "bytes": 1048576
+          }
+        ]
+      },
+      {
+        "wall_seconds": 0.6846197089998896,
+        "peak_owned_process_bytes": 129238240,
+        "peak_active_workers": 3,
+        "logical_payload_bytes": 3145728,
+        "results": [
+          {
+            "index": 0,
+            "sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+            "bytes": 1048576
+          },
+          {
+            "index": 1,
+            "sha256": "ee78cd29d3a534713b36e6ff6fa3668c8a8f851a542d5eb2401c25ca4e057d02",
+            "bytes": 1048576
+          },
+          {
+            "index": 2,
+            "sha256": "2fa4430272111c7854b204001461e16f2c73725b07dde2b6d1dc4f2aa8fe18da",
+            "bytes": 1048576
+          }
+        ]
+      }
+    ],
+    "after": [
+      {
+        "wall_seconds": 2.5596839169993473,
+        "peak_owned_process_bytes": 92588168,
+        "peak_active_workers": 1,
+        "logical_payload_bytes": 3145728,
+        "results": [
+          {
+            "index": 0,
+            "sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+            "bytes": 1048576
+          },
+          {
+            "index": 1,
+            "sha256": "ee78cd29d3a534713b36e6ff6fa3668c8a8f851a542d5eb2401c25ca4e057d02",
+            "bytes": 1048576
+          },
+          {
+            "index": 2,
+            "sha256": "2fa4430272111c7854b204001461e16f2c73725b07dde2b6d1dc4f2aa8fe18da",
+            "bytes": 1048576
+          }
+        ]
+      },
+      {
+        "wall_seconds": 2.5184433329995954,
+        "peak_owned_process_bytes": 91211936,
+        "peak_active_workers": 1,
+        "logical_payload_bytes": 3145728,
+        "results": [
+          {
+            "index": 0,
+            "sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+            "bytes": 1048576
+          },
+          {
+            "index": 1,
+            "sha256": "ee78cd29d3a534713b36e6ff6fa3668c8a8f851a542d5eb2401c25ca4e057d02",
+            "bytes": 1048576
+          },
+          {
+            "index": 2,
+            "sha256": "2fa4430272111c7854b204001461e16f2c73725b07dde2b6d1dc4f2aa8fe18da",
+            "bytes": 1048576
+          }
+        ]
+      },
+      {
+        "wall_seconds": 2.580083499999091,
+        "peak_owned_process_bytes": 91605032,
+        "peak_active_workers": 1,
+        "logical_payload_bytes": 3145728,
+        "results": [
+          {
+            "index": 0,
+            "sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+            "bytes": 1048576
+          },
+          {
+            "index": 1,
+            "sha256": "ee78cd29d3a534713b36e6ff6fa3668c8a8f851a542d5eb2401c25ca4e057d02",
+            "bytes": 1048576
+          },
+          {
+            "index": 2,
+            "sha256": "2fa4430272111c7854b204001461e16f2c73725b07dde2b6d1dc4f2aa8fe18da",
+            "bytes": 1048576
+          }
+        ]
+      }
+    ]
+  },
+  "summary": {
+    "before": {
+      "wall_seconds": 0.7144637499986857,
+      "peak_owned_process_bytes": 129713448,
+      "peak_active_workers": 3,
+      "logical_payload_bytes": 3145728
+    },
+    "after": {
+      "wall_seconds": 2.5596839169993473,
+      "peak_owned_process_bytes": 91605032,
+      "peak_active_workers": 1,
+      "logical_payload_bytes": 3145728
+    }
+  },
+  "acceptance": "PASS; identical durable payloads; budgeted maximum concurrency = 1",
+  "limits": [
+    "Synthetic bounded workload, not an application benchmark.",
+    "Total payload bytes are unchanged.",
+    "Host/NAND writes and SSD life are not measured by payload length.",
+    "Foreign jobs were not stopped or modified."
+  ]
+}
