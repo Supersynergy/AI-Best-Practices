@@ -29,6 +29,13 @@ class BudgetTests(unittest.TestCase):
         self.budget.release(first)
         self.assertIsNotNone(self.budget.acquire(2 * mac_budget.GIB, 1))
 
+    def test_process_identity_is_independent_of_caller_timezone(self):
+        with patch.dict(os.environ, {"TZ": "UTC"}):
+            utc = mac_budget.pid_birth(os.getpid())
+        with patch.dict(os.environ, {"TZ": "Pacific/Honolulu"}):
+            honolulu = mac_budget.pid_birth(os.getpid())
+        self.assertEqual(utc, honolulu)
+
     def test_shared_memory_queue(self):
         self.assertIsNotNone(self.budget.acquire(6 * mac_budget.GIB, 0))
         self.assertIsNone(self.budget.acquire(3 * mac_budget.GIB, 0))

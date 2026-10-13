@@ -40,6 +40,7 @@ def pid_birth(pid):
         capture_output=True,
         text=True,
         timeout=3,
+        env={**os.environ, "TZ": "UTC", "LC_ALL": "C"},
     )
     return result.stdout.strip() or None
 
