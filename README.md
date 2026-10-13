@@ -29,7 +29,7 @@ Adapt [AGENTS.md](AGENTS.md) to the repository. Keep permanent instructions shor
 ## Follow one delivery loop
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[Useful outcome] --> B[Acceptance and baseline]
     B --> C[Measure the constraint]
     C --> D[Small complete change]
