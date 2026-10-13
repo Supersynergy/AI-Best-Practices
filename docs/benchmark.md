@@ -1,6 +1,6 @@
 # Executed benchmark
 
-Three samples per arm on an M4 Max Mac, alternating arm order. Each arm starts three owned foreground jobs. Each job touches 32 MiB and writes one 1-MiB payload, with identical output hashes. Processes start fresh; filesystem cache is uncontrolled/warm.
+Three samples per arm on macOS, alternating arm order. Each arm starts three owned foreground jobs. Each job touches 32 MiB and writes one 1-MiB payload, with identical output hashes. Processes start fresh; filesystem cache is uncontrolled/warm. Device identifiers are omitted from the public record; this limits cross-machine comparisons.
 
 | Metric (median) | Without admission | Shared I/O slot |
 |---|---:|---:|

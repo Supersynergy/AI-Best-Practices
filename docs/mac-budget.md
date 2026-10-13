@@ -2,6 +2,36 @@
 
 The runner reserves declared whole-tree peak RAM and a number of I/O slots. This is admission control for cooperating future jobs. It cannot prevent an unregistered application or a misestimated job from allocating more memory or issuing writes.
 
+## Install and use
+
+Requires macOS and Python 3.12+. Core tests also run on Linux; the live admission probes are macOS-specific.
+
+```sh
+mkdir -p "$HOME/.local/bin"
+install -m 755 scripts/mac_budget.py "$HOME/.local/bin/mac-resource-run"
+
+mac-resource-run status
+mac-resource-run run --memory-gib 4 --io-slots 1 --wait-seconds 60 -- your-build-command
+```
+
+Ensure `~/.local/bin` is in your `PATH`. Replace the example's 4-GiB declaration with the measured whole-tree peak. Configure one shared profile at `~/.config/mac-workflow/resource-budget.json`:
+
+```json
+{
+  "memory_budget_gib": 8,
+  "io_slots": 1,
+  "headroom_gib": 6,
+  "disk_headroom_gib": 20,
+  "live_guard": true
+}
+```
+
+This is a starting proposal for a machine with 24–32 GiB of RAM, subject to its existing load. Select and verify a profile from the table below. Without a configuration file, the reservation cap defaults to half of physical RAM. All cooperating jobs must share the state directory and configuration. Existing jobs remain outside the reservation system.
+
+Run checks with `python3 -m unittest discover -s tests -v`. An optional bounded comparison is `python3 scripts/benchmark_budget.py --samples 3 --output your-measurement.json`; use a separate output to preserve the recorded evidence.
+
+## Live admission
+
 The live Mac gate requires a normal native pressure level and sufficient estimated available memory for all existing reservations plus the new peak and headroom. The estimate includes free, inactive and speculative pages; these are not an allocation guarantee. Counting existing reservations is conservative and can count memory that has already been allocated twice. A minimum filesystem availability gate prevents admissions below the configured floor. GPU/model memory must be included in the declared peak.
 
 ## Conservative starting profiles

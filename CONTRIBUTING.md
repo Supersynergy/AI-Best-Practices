@@ -1,6 +1,6 @@
 # Contributing
 
-Start with a concrete failure or accepted workload. Include the expected and observed output, resource limits and executable check. Preserve other work and keep changes readable.
+Start with a concrete failure. For an improvement, define the accepted workload and the result that must stay unchanged. Include expected and observed output with the executable check. State resource limits. Preserve other work and keep changes readable.
 
 For performance changes, compare identical inputs and acceptance. Record cache state, sample count, wall time, peak memory, relevant write accounting, retries and recovery. State what remains unmeasured. Do not exchange durability or user effort for a better isolated number.
 
