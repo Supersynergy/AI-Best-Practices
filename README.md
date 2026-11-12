@@ -1,4 +1,4 @@
-![AI Best Practices: Reliable AI Development](assets/hero.png)
+![AI Best Practices](assets/hero.png)
 
 # AI Best Practices
 
