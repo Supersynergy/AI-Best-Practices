@@ -11,6 +11,8 @@ Make useful changes with clear acceptance, short feedback loops and less repeate
 
 **[20 principles](docs/principles.md) · [Bottleneck guide](docs/bottlenecks.md) · [Daily workflows](docs/workflows.md) · [Measurement](docs/measurement.md) · [Sources](docs/sources.md)**
 
+[🎯 Define the result](#start-with-the-result) · [🔁 Delivery loop](#follow-one-delivery-loop) · [🧠 Context](#keep-tools-and-context-focused) · [📏 Measurement](#measure-the-whole-result)
+
 ## Start with the result
 
 Give the agent a small task contract. Include the behavior that should change, the constraints it must preserve and the check that will decide whether it worked.
